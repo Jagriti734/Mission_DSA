@@ -1,0 +1,14 @@
+def toys(w):
+    w.sort()
+    containers = 0
+    i = 0
+    n = len(w)
+
+    while i < n:
+        containers += 1
+        limit = w[i] + 4  # max weight allowed in this container
+        # skip all toys that fit in this container
+        while i < n and w[i] <= limit:
+            i += 1
+
+    return containers
