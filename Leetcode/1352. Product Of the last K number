@@ -1,0 +1,7 @@
+def product_of_last_k(nums, k):
+    product = 1
+    for i in range(len(nums) - k, len(nums)):
+        product *= nums[i]
+    return product
+
+
