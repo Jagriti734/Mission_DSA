@@ -1,0 +1,14 @@
+from collections import defaultdict
+
+def jimAndJokes(dates):
+    # Map from decimal interpretation -> frequency
+    count = defaultdict(int)
+    result = 0
+    
+    for m, d in dates:
+        base = max(m, d) + 1  # smallest valid base
+        val = m * base + d    # convert to unique decimal form
+        result += count[val]  # count existing jokes with same value
+        count[val] += 1
+    
+    return result
