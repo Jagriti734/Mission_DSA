@@ -1,0 +1,18 @@
+def largestPermutation(k, arr):
+    n = len(arr)
+    index_map = {v: i for i, v in enumerate(arr)}
+
+    for i in range(n):
+        if k == 0:
+            break
+        expected = n - i  # largest remaining value
+        if arr[i] != expected:
+            swap_idx = index_map[expected]
+            # swap
+            arr[i], arr[swap_idx] = arr[swap_idx], arr[i]
+            # update map
+            index_map[arr[swap_idx]] = swap_idx
+            index_map[arr[i]] = i
+            k -= 1
+
+    return arr
