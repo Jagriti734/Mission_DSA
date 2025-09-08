@@ -1,0 +1,30 @@
+def waiter(number, q):
+    # Function to generate first q primes
+    def primes(n):
+        primes = []
+        candidate = 2
+        while len(primes) < n:
+            is_prime = all(candidate % p != 0 for p in primes)
+            if is_prime:
+                primes.append(candidate)
+            candidate += 1
+        return primes
+
+    primes_list = primes(q)
+    A = number[::-1]  # reverse to treat list as stack
+    result = []
+
+    for p in primes_list:
+        B = []
+        next_A = []
+        while A:
+            plate = A.pop()
+            if plate % p == 0:
+                B.append(plate)
+            else:
+                next_A.append(plate)
+        result.extend(B)  # print divisible first
+        A = next_A
+
+    result.extend(A[::-1])  # remaining plates in original order
+    return result
