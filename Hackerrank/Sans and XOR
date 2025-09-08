@@ -1,0 +1,10 @@
+def sansXor(arr):
+    n = len(arr)
+    result = 0
+
+    for i in range(n):
+        freq = (i + 1) * (n - i)
+        if freq % 2 == 1:  # odd contribution
+            result ^= arr[i]
+
+    return result
